@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Calidad</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.1/dist/frappe-gantt.css">
+</head>
+<body>
+
+    <div id="login-container" class="container">
+        <h1>Acceso al Sistema</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+            <p id="login-error" class="error-message"></p>
+        </form>
+    </div>
+
+    <main id="app-container" class="hidden">
+        <header>
+            <h1>CARGA DE ACTIVIDADES DE CONTROL DE CALIDAD</h1>
+            <div class="toolbar">
+                <button id="export-excel-btn">Exportar a Excel</button>
+                <button id="about-btn">Acerca de...</button>
+            </div>
+        </header>
+
+        <section id="form-section" class="container">
+            <h2>Registrar Nueva Actividad</h2>
+            <p id="data-error" class="error-message"></p>
+            <form id="activity-form">
+                <fieldset id="form-fieldset"> <div class="form-grid">
+                        <select id="area-select" required>
+                            <option value="">-- Cargando Áreas... --</option>
+                        </select>
+                        <select id="personal-select" required>
+                            <option value="">-- Seleccione Personal --</option>
+                        </select>
+                        <input type="text" id="actividad-input" placeholder="Nombre de la Actividad" required>
+                        <input type="date" id="inicio-date" required title="Fecha de Inicio">
+                        <input type="date" id="termino-date" required title="Fecha de Término">
+                        <select id="dificultad-select" required>
+                            <option value="">-- Dificultad --</option>
+                            <option value="Sencillo">Sencillo</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Complejo">Complejo</option>
+                        </select>
+                    </div>
+                    <button type="submit">Guardar Actividad</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="data-view-section" class="container">
+            <h2>Visualización de Actividades (Semana Actual)</h2>
+            <div class="view-toggle">
+                <button id="table-view-btn" class="active">Vista de Tabla</button>
+                <button id="gantt-view-btn">Vista de Gantt</button>
+            </div>
+            
+            <div id="table-view">
+                <table id="activities-table">
+                    <thead>
+                        <tr>
+                            <th>Área</th><th>Personal</th><th>Actividad</th><th>Inicio</th><th>Término</th><th>Dificultad</th><th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            
+            <div id="gantt-view" class="hidden"><svg id="gantt-chart"></svg></div>
+        </section>
+    </main>
+
+    <div id="about-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Acerca del Programa</h2>
+            <p><strong>Nombre:</strong> REPORTE DE PROCESO</p>
+            <p><strong>Versión:</strong> 1.0</p>
+            <p><strong>Desarrollador:</strong> Jorge Armando Salas Villaseñor</p>
+            <p><strong>Descripción:</strong> Registra las actividades del proceso.</p>
+        </div>
+    </div>
+    
+    <div id="loader" class="loader-overlay hidden"><div class="loader-spinner"></div></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
