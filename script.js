@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURACIÓN ---
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHANTNn-HOpyF5TK0Ct4QkcxzDiOhpqIkwx911_cFLO5AxWu0ydQ7mDCq-CP-NtCo5/exec"; // <-- ¡IMPORTANTE! Asegúrate que la URL de tu Web App es correcta.
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNowLoTnadH8OVBDDM6UR56srmHSh63Gfm9OXYnDW37sBnNkeFvHMu14fD3qY8Xjg/exec"; // <-- ¡IMPORTANTE! Asegúrate que la URL de tu Web App es correcta.
     
     // --- ELEMENTOS DEL DOM ---
     const loginContainer = document.getElementById('login-container');
